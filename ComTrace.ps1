@@ -251,8 +251,16 @@ function Get-ComTrace {
                     }
                 }
                 2 {
-                    
 
+
+                    if ((get-Job -id $XperfJob.Id).State -eq "Completed" -and (get-job -id $ComJob.Id).State -eq "Completed") {
+                        Write-Output $(get-date) | out-file -FilePath $Logs"\JobCompletedSuccessfully.txt"
+                        receive-job -job $XperfJob -keep
+                        receive-job -job $ComJob -keep
+                        $Command = 2    
+                        break
+                    }
+                
                     #Writing a dummy event
                     .$DummyEvent
                     Write-Output $(get-date) | out-file -FilePath $Logs"\TracesStoppedForceFully.txt"
