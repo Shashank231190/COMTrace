@@ -22,4 +22,4 @@ $EventProviderName = "Windows Error Reporting"
 $MessageToMonitor = "The CTACServer Service service terminated unexpectedly"
 
 Xperf tool kit needs to be kept under c:\ drive.
-$Pwd  field needs to be updated in StopLogic source.
+Update $Pwd  field with password of local administrator in StopLogic source.
